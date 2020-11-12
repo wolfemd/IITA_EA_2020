@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Explanation of data on Cassavabase FTP server</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IITA_EA_2020</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Imputation 2020
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="convertDCas20_5261_ToVCF.html">Conversion DArT report DCas20_5261 to VCF</a>
+    </li>
+    <li>
+      <a href="ImputeDCas20_5261.html">Impute DCas20_5261</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Other
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="about.html">About</a>
+    </li>
+    <li>
+      <a href="license.html">License</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/wolfemd/IITA_EA_2020">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Explanation of data on Cassavabase FTP server</h1>
+<h4 class="author">Marnin Wolfe, Ph.D.</h4>
+<address class="author_afil">
+Cornell University<br><h4 class="date">2020-Sept-15</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-11-11
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>IITA_EA_2020/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefUsersmw489GoogleDriveNextGenGSNaCRRI2020GStreeec80a12cec280bf2c911573312b6ad53e2d0b50dtargetblankec80a12a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="/Users/mw489/Google Drive/NextGenGS/NaCRRI_2020GS//tree/ec80a12cec280bf2c911573312b6ad53e2d0b50d" target="_blank">ec80a12</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefUsersmw489GoogleDriveNextGenGSNaCRRI2020GStreeec80a12cec280bf2c911573312b6ad53e2d0b50dtargetblankec80a12a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="/Users/mw489/Google Drive/NextGenGS/NaCRRI_2020GS//tree/ec80a12cec280bf2c911573312b6ad53e2d0b50d" target="_blank">ec80a12</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/.DS_Store
+    Ignored:    data/.DS_Store
+    Ignored:    output/.DS_Store
+
+Untracked files:
+    Untracked:  data/OrderAppendix_1_DCas20-5261/
+    Untracked:  data/Report-DCas20-5261/
+    Untracked:  workflowr_log.R
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/ReadMe_updated_2020Sep15.Rmd</code>) and HTML (<code>docs/ReadMe_updated_2020Sep15.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="/Users/mw489/Google Drive/NextGenGS/NaCRRI_2020GS//blob/8903c1c7a6080071d54793affc4ae42153029605/docs/ReadMe_updated_2020Sep15.html" target="_blank">8903c1c</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-11-11
+</td>
+<td>
+All code for processing and imputing DCas20_5251 for IITA-EA is ready to run.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="/Users/mw489/Google Drive/NextGenGS/NaCRRI_2020GS//blob/7efdd906a57cdb11144754a3a818dbc8f2cadc1a/docs/ReadMe_updated_2020Sep15.html" target="_blank">7efdd90</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-10-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="/Users/mw489/Google Drive/NextGenGS/NaCRRI_2020GS//blob/c6022b62c22b4af75abce44157bc20c26191afbc/docs/ReadMe_updated_2020Sep15.html" target="_blank">c6022b6</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-10-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="/Users/mw489/Google Drive/NextGenGS/NaCRRI_2020GS//blob/4f8a229950ea3e4858b03edda1b13894dcdec908/analysis/ReadMe_updated_2020Sep15.Rmd" target="_blank">4f8a229</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-10-09
+</td>
+<td>
+Publish imputations for 2020 of DCAs20_5360 (and 2019 code too) for
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<p>Files uploaded are in sub-directories of the Cassavabase FTP directory, <a href="ftp://ftp.cassavabase.org/marnin_datasets/nextgenImputation2019/">here</a>.</p>
+<p>As a starting point, I propose we upload the minimum set of VCF datasets, outlined below. For now, upload only VCF files that have been imputed and passed through a final post-impute filter. Such files are my starting point for genomic prediction and most other analyses.</p>
+<p>We should also discuss uploading less filtered, or unfiltered and/or raw unimputed data to the database.</p>
+<p>Imputed files are all in (<code>*.vcf.gz</code>) one for each chromosome. They could be concatenated to form a genome-wide dataset.</p>
+<div id="west-africa-iita-nrcri-imputed-data" class="section level1">
+<h1>West Africa (IITA + NRCRI) imputed data</h1>
+<p>Imputed VCF files including all training populations and GS progeny clones. The common set of SNPs in this dataset include both GBS and DArTseqLD sites and <em>have</em> been post-imputation filtered (keep sites with AR2/DR2&gt;=0.75, P_HWE&gt;1e-20, MAF&gt;0.005).</p>
+<p>The “Imputation Reference Panel” part includes 15,074 clones (of which 10,045 are IITA+NRCRI GS progeny from the GBS-era). 411 clones were genotyped with GBS+DArT. 84,957 SNP (imputed, phased and filtered). The non GS progeny include all breeding program’s (W. and E. Africa) training populations and other diversity accessions, again from the GBS-era. The “GSprogeny” referred to in the file name below are IITA GS C4 (TMS18, TMS19) and NRCRI GS C2b genotyped with DArT-only, which were imputed using the “RefPanel”. 6782 samples with DArT-only. 68,814 SNP (“ready for GS”).</p>
+<p>Analysis was conducted mostly during July 2019.</p>
+<p>Found here: <code>ftp://ftp.cassavabase.org/marnin_datasets/nextgenImputation2019/ImputationStageIII_72619/</code></p>
+<p>E.g. <code>chr1_RefPanelAndGSprogeny_ReadyForGP_72719.vcf.gz</code></p>
+<p>DArT reports involved:</p>
+<ol style="list-style-type: decimal">
+<li>DCas19_4301: DArTseqLD genotyping of samples previously with GBS</li>
+<li>DCas19_4351: DArT-only IITA C4 and NRCRI C2a+C2b</li>
+</ol>
+</div>
+<div id="east-africa-nacrri-tari-imputed-data" class="section level1">
+<h1>East Africa (NaCRRI + TARI) imputed data</h1>
+<p>East Africa imputation was conducted in September 2019. The same overall procedure was followed, but additional samples were added (and some were excluded) as follows.</p>
+<p>“Imputation Reference Panel” consisted of 19,136 clones, includes samples in the W. Africa RefPanel except GS progeny. 413 clones (in addition to W. Africa dataset’s 411)were genotyped with both GBS and DArTseqLD (~340 from TARI). 56,250 SNP (imputed, phased and filtered). The East Africa version of the RefPanel was used to impute 1597 samples (NaCRRI GS C2) genotyped with DArTseq (<em>not</em> DArTseqLD). The resulting dataset after keeping only sites passing post-impute filters for the progeny has 23,431 SNP (“ready for GS”).</p>
+<p>Found here: <code>ftp://ftp.cassavabase.org/marnin_datasets/nextgenImputation2019/ImputationEastAfrica_StageIII_91119/</code></p>
+<p>E.g. <code>chr1_ImputationEastAfrica_AllSamples_ReadyForGP_91419.vcf.gz</code></p>
+<p>Two DArT reports were involved:</p>
+<p>DArT reports involved:</p>
+<ol style="list-style-type: decimal">
+<li>DCas19_4459: Tanzania samples with DArTseqLD, NaCRRI samples with DArTseq (not LD).</li>
+<li>DCas19_4432: NaCRRI GS C2 (DArTseq not LD).</li>
+</ol>
+</div>
+<div id="embrapa-l.-america" class="section level1">
+<h1>EMBRAPA (L. America)</h1>
+<p>Imputation for EMBRAPA leveraged only Latin American genotype data. Conducted in October 2019. “Imputation Reference Panel” included all L. America germplasm with GBS-only and/or GBS+DArTseqLD, including lines from CIAT, but excluding EMBRAPA GS progeny. 4,101 samples, 723 clones (of 869 original TP members) genotyped with both GBS and DArTseqLD. 64,886 SNP (imputed, phased and filtered). 2099 samples (EMBRAPA GS C1) were genotyped with only DArTseqLD and were imputed using the RefPanel. The resulting dataset, after post-impute filtering contains only 8,495 SNP (“ready for GS”).</p>
+<p>The EMBRAPA dataset still needs to be loaded to the FTP directory (will do that shortly).</p>
+<p>Will be found here: <code>ftp://ftp.cassavabase.org/marnin_datasets/nextgenImputation2019/ImputationEMBRAPA_102419/</code></p>
+<p>Data are in two sets of files:</p>
+<p><strong>RefPanel</strong>: <code>chr1_ImputationReferencePanel_EMBRAPA_Ready2Phase_102419.vcf.gz</code></p>
+<p><strong>C1 progeny</strong>: <code>chr1_EMBRAPA_C1progeny_FromDCas19_4301_REFimputedAndFiltered_102619.vcf.gz</code></p>
+<p>DArT reports involved:</p>
+<ol style="list-style-type: decimal">
+<li>DCas19_4403: EMBRAPA samples including 2099 GS C1 samples with only DArTseq, and TP samples which had previously been genotyped with GBS.</li>
+</ol>
+</div>
+<div id="further-details-on-imputation-procedure" class="section level1">
+<h1>Further details on imputation procedure</h1>
+<p>The common strategy for imputation used across all files above is as follows:</p>
+<p>Relies on:</p>
+<ol style="list-style-type: decimal">
+<li>Samples genotyping with both marker platforms (GBS + DArT)</li>
+<li>SNP markers observed by both platforms</li>
+<li>NextGenC custom DArT assay and reporting format, namely use of the ApeKI restriction enzyme <em>and</em> reporting of read depth data to us.</li>
+<li>Read depth data was used to compute genotype likelihoods (GL). For imputation, I used a combination of Beagle4.1 to do initial imputation steps. Beagle 4.1 is slow <em>but</em> can use the GLs to produce a result which should be more accurate than simply using called genotypes (GT). For phasing steps <em>and</em> for the imputation of target progeny (those with DArT-only), I used Beagle5.0 because it is <em>fast</em> and <em>accurate</em> IF you have GT calls and a big reference panel.</li>
+<li>Be conservative. Between each imputation step, I applied the following filter: keep sites with AR2 or DR2&gt;=0.75, P_HWE&gt;1e-20, MAF&gt;0.005. AR2 and DR2 are scores assigned by Beagle4.1 and Beagle5.0, respectively to measure expected quality of imputation (reported in the INFO field of VCF). P_HWE was based on HWE chi-square done by <code>vcftools</code>. MAF&gt;0.005 is to remove anything that is essentially fixed in the dataset.</li>
+<li>Samples that were supposed to have GBS and DArT were verified before combining the data. Used identity-by-descent (IBD) estimation in plink v1.9 (<code>plink1.9 --genome</code>) at DArT-GBS intersecting sites, to validate identity match (threshold &gt;=0.75).</li>
+</ol>
+<p>Two stages to building imputation reference panels:</p>
+<pre><code>Stage I. Impute all GBS+DArT samples. Plus GBS-only founders and diversity lines.
+Stage II. Impute GBS-only GS descendents</code></pre>
+<p>Third and final Stage III: Impute target panels (i.e. selection candidates with DArT-only).</p>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
