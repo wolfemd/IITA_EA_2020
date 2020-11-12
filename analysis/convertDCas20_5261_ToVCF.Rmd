@@ -7,6 +7,9 @@ editor_options:
   chunk_output_type: inline
 ---
 
+```{bash, eval=F}
+cd /home/jj332_cas/marnin/IITA_EA_2020
+```
 
 # Input Parameters
 ```{r, eval=F}
@@ -37,55 +40,50 @@ Start manual. Check that the files read in according to previous code. Adjust co
 # readCounts<-read.csv(dartcountsInput, stringsAsFactors = F,header = T,skip=nskipcounts)
 # 
 # dim(vcf)
-# # [1] 13603  2052
+# # [1] 13603  1844
 # dim(readCounts)
-# # [1] 27206  2068
+# [1] 27206  1878
 # 
 # # the lenghts don't match?
 # 
 # # Initial look at names....
 # colnames(readCounts)[1:100]
-#  #  [1] "AlleleID"                      "CloneID"                      
-#  #  [3] "AlleleSequence"                "TrimmedSequence"              
-#  #  [5] "TrimmedSequence_plus_Strand"   "Chrom_Cassava_v61"            
-#  #  [7] "Tag_ChromPos_Cassava_v61"      "SNP_ChromPos_Cassava_v61"     
-#  #  [9] "AlnCnt_Cassava_v61"            "AlnEvalue_Cassava_v61"        
-#  # [11] "Strand_Cassava_v61"            "SNP"                          
-#  # [13] "SnpPosition"                   "CallRate"                     
-#  # [15] "OneRatioRef"                   "OneRatioSnp"                  
-#  # [17] "FreqHomRef"                    "FreqHomSnp"                   
-#  # [19] "FreqHets"                      "PICRef"                       
-#  # [21] "PICSnp"                        "AvgPIC"                       
-#  # [23] "AvgCountRef"                   "AvgCountSnp"                  
-#  # [25] "RepAvg"                        "GS_Prediction_NaCRRI_2019_2"  
-#  # [27] "GS_Prediction_NaCRRI_2019_1"   "GS_Prediction_NaCRRI_2019_26" 
-#  # [29] "GS_Prediction_NaCRRI_2019_28"  "GS_Prediction_NaCRRI_2019_64" 
-#  # [31] "GS_Prediction_NaCRRI_2019_77"  "GS_Prediction_NaCRRI_2019_92" 
-#  # [33] "GS_Prediction_NaCRRI_2019_80"  "GS_Prediction_NaCRRI_2019_3"  
-#  # [35] "GS_Prediction_NaCRRI_2019_14"  "GS_Prediction_NaCRRI_2019_52"
-# colnames(vcf)[1:30]
-# #  [1] "X.CHROM"                      "POS"                         
-# #  [3] "ID"                           "REF"                         
-# #  [5] "ALT"                          "QUAL"                        
-# #  [7] "FILTER"                       "INFO"                        
-# #  [9] "FORMAT"                       "GS_Prediction_NaCRRI_2019_2" 
-# # [11] "GS_Prediction_NaCRRI_2019_11" "GS_Prediction_NaCRRI_2019_12"
-# # [13] "GS_Prediction_NaCRRI_2019_13" "GS_Prediction_NaCRRI_2019_3" 
-# # [15] "GS_Prediction_NaCRRI_2019_4"  "GS_Prediction_NaCRRI_2019_5" 
-# # [17] "GS_Prediction_NaCRRI_2019_6"  "GS_Prediction_NaCRRI_2019_7" 
-# # [19] "GS_Prediction_NaCRRI_2019_8"  "GS_Prediction_NaCRRI_2019_9" 
-# # [21] "GS_Prediction_NaCRRI_2019_10" "GS_Prediction_NaCRRI_2019_1" 
-# # [23] "GS_Prediction_NaCRRI_2019_23" "GS_Prediction_NaCRRI_2019_24"
-# # [25] "GS_Prediction_NaCRRI_2019_25" "GS_Prediction_NaCRRI_2019_14"
-# # [27] "GS_Prediction_NaCRRI_2019_15" "GS_Prediction_NaCRRI_2019_17"
-# # [29] "GS_Prediction_NaCRRI_2019_18" "GS_Prediction_NaCRRI_2019_19"
+ #  [1] "AlleleID"                    "CloneID"                    
+ #  [3] "ClusterTempIndex"            "AlleleSequence"             
+ #  [5] "TrimmedSequence"             "TrimmedSequence_plus_Strand"
+ #  [7] "Short"                       "Lowcomplexity"              
+ #  [9] "Chrom_Cassava_v61"           "ChromPos_Cassava_v61"       
+ # [11] "SNP_ChromPos_Cassava_v61"    "AlnCnt_Cassava_v61"         
+ # [13] "AlnEvalue_Cassava_v61"       "Strand_Cassava_v61"         
+ # [15] "SeqDiff_Cassava_v61"         "ClusterConsensusSequence"   
+ # [17] "ClusterSize"                 "AlleleSeqDist"              
+ # [19] "SNP"                         "SnpPosition"                
+ # [21] "CallRate"                    "OneRatioRef"                
+ # [23] "OneRatioSnp"                 "FreqHomRef"                 
+ # [25] "FreqHomSnp"                  "FreqHets"                   
+ # [27] "PICRef"                      "PICSnp"                     
+ # [29] "AvgPIC"                      "AvgCountRef"                
+ # [31] "AvgCountSnp"                 "RatioAvgCountRefAvgCountSnp"
+ # [33] "FreqHetsMinusFreqMinHom"     "AlleleCountsCorrelation"    
+ # [35] "aggregateTagsTotal"          "DerivedCorrMinusSeedCorr"   
+ # [37] "RepRef"                      "RepSNP"                     
+ # [39] "RepAvg"                      "PicRepRef"                  
+ # [41] "PicRepSNP"                   "TotalPicRepRefTest"         
+ # [43] "TotalPicRepSnpTest"          "MM161583"                   
+ # [45] "MM161292"                    "MM160311"                   
+ # [47] "MM161370"                    "MM160873"                   
+ # [49] "MM160630"                    "MM161194"                   
+ # [51] "MM160219"                    "MM160923"                   
+ # [53] "MM161595"                    "MM160730"                   
+ # [55] "MM160120"                    "MM160695"
+#colnames(vcf)[1:30]
+#  [1] "X.CHROM"  "POS"      "ID"       "REF"      "ALT"      "QUAL"    
+#  [7] "FILTER"   "INFO"     "FORMAT"   "MM161104" "MM160414" "MM161519"
+# [13] "MM160032" "MM161583" "MM160923" "MM160093" "MM160166" "MM160243"
+# [19] "MM160638" "MM160468" "MM160092" "MM160642" "MM160867" "MM160856"
+# [25] "MM160789" "MM161292" "MM161595" "MM161011" "MM161354" "MM161122"
 
-# Need to add a check in the conversion function 
-# that matches the names and reorders if necessary...
-
-#... turns out, the function already checks for that!!  
-# But seriously... the two outputs should come in the same order to avoid downstream problems.
-
+# rm(vcf,readCounts); gc()
 ```
 
 # Conversion function
