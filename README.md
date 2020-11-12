@@ -1,4 +1,4 @@
-# NaCRRI_2020GS
+# IITA_2020_GS
 
 A [workflowr][] project.
 
